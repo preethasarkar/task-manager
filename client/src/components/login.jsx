@@ -2,6 +2,17 @@ import React from "react";
 import {Avatar, Checkbox, Grid,Paper, TextField, FormControlLabel, Button, Typography, Link} from "@mui/material";
 
 function Login(){
+
+    const [isMouseOver, setMouseOver]=React.useState(false);
+
+    function mouseover(){
+        setMouseOver(true);
+    }
+
+    function mouseout(){
+        setMouseOver(false);
+    }
+
     const paperStyle={
         padding: "20px",
         margin:"20px auto",
@@ -18,7 +29,7 @@ function Login(){
                         <TextField label="username" placeholder="Enter username" fullWidth required/>
                         <TextField label="password" placeholder="Enter password" type ="password" fullWidth required/>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
-                        <Button type="submit" color="primary" variant="contained" fullWidth required>Sign In</Button>
+                        <Button onMouseOver={mouseover} onMouseOut={mouseout} type="submit" color={isMouseOver ? "success" : "primary"} variant="contained" fullWidth required >Sign In</Button>
 
                     </Grid>
                     <Typography>
