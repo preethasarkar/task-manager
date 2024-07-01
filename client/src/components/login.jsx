@@ -1,9 +1,12 @@
 import React from "react";
 import {Avatar, Checkbox, Grid,Paper, TextField, FormControlLabel, Button, Typography, Link} from "@mui/material";
+import Task from "./task";
+
 
 function Login(){
 
     const [isMouseOver, setMouseOver]=React.useState(false);
+    const [isAuthenticated, setIsAuthenticated]=React.useState(false);
 
     function mouseover(){
         setMouseOver(true);
@@ -13,6 +16,28 @@ function Login(){
         setMouseOver(false);
     }
 
+    async function handleform(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = {
+          username: formData.get("username"),
+          password: formData.get("password"),
+        };
+
+        const response = await fetch("http://localhost:5500/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+    
+        const result = await response.json();
+        if (result.success) {
+          setIsAuthenticated(true);
+        }
+      }
+
     const paperStyle={
         padding: "20px",
         margin:"20px auto",
@@ -21,17 +46,21 @@ function Login(){
     }
     return(
         <div>
+            {isAuthenticated ? <Task /> : (
             <Grid> 
                 <Paper elevation={10} style={paperStyle}>
+            <form onSubmit={handleform} autoComplete="off">
                     <Grid container direction="column" alignItems="center">
-                        <Avatar></Avatar>
+                        <Avatar />
+                        
                         <h2>Sign In</h2>
-                        <TextField label="username" placeholder="Enter username" fullWidth required/>
-                        <TextField label="password" placeholder="Enter password" type ="password" fullWidth required/>
+                        <TextField name="username" label="username" placeholder="Enter username" fullWidth required/>
+                        <TextField name="password" label="password" placeholder="Enter password" type ="password" fullWidth required/>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
                         <Button onMouseOver={mouseover} onMouseOut={mouseout} type="submit" color={isMouseOver ? "success" : "primary"} variant="contained" fullWidth required >Sign In</Button>
-
+                        
                     </Grid>
+            </form>    
                     <Typography>
                             <Link href="#" >Forgot password ?</Link>
                     </Typography>
@@ -39,8 +68,8 @@ function Login(){
                             <Link href="#" >Sign Up</Link>
                     </Typography>
                 </Paper>
-            </Grid>
-        </div>
+            </Grid> ) }
+        </div> 
     )
 }
 export default Login;
