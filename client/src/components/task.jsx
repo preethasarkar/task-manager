@@ -1,8 +1,8 @@
 import React from "react";
 
-function Task(){
+function Task(props){
     return (
-        <h1>Welcome to dashboard</h1>
+        <h1>Welcome {props.username}</h1>
     );
 }
 

@@ -3,6 +3,8 @@ import {Avatar, Checkbox, Grid,Paper, TextField, FormControlLabel, Button, Typog
 import Task from "./task";
 
 
+let data; 
+
 function Login(){
 
     const [isMouseOver, setMouseOver]=React.useState(false);
@@ -19,7 +21,7 @@ function Login(){
     async function handleform(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const data = {
+        data = {
           username: formData.get("username"),
           password: formData.get("password"),
         };
@@ -38,6 +40,7 @@ function Login(){
         }
       }
 
+
     const paperStyle={
         padding: "20px",
         margin:"20px auto",
@@ -46,7 +49,7 @@ function Login(){
     }
     return(
         <div>
-            {isAuthenticated ? <Task /> : (
+          {isAuthenticated ? <Task username={data.username}/> : (
             <Grid> 
                 <Paper elevation={10} style={paperStyle}>
             <form onSubmit={handleform} autoComplete="off">
@@ -68,8 +71,8 @@ function Login(){
                             <Link href="#" >Sign Up</Link>
                     </Typography>
                 </Paper>
-            </Grid> ) }
+            </Grid>)}
         </div> 
-    )
+    );
 }
 export default Login;
