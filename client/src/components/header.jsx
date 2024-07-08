@@ -8,7 +8,7 @@ function Header(){
             <Avatar className="icon" variant="rounded">
                 <AssignmentIcon />
             </Avatar>
-            <h1> Notion 2.0 </h1>
+            <h1> TaskBoard </h1>
         </header>
     )
 }

@@ -1,15 +1,89 @@
-body{
+body {
   font-size: 100%;
+  background-color: #2d2b2b;
 }
-.footer-paragraph{
+* {
+  color: white;
+}
+.footer-paragraph {
   text-align: center;
   font-size: 1.2em;
 }
 
-header{
+header {
   display: flex;
   align-items: center;
 }
-header .icon{
+header .icon {
   margin: 10px 10px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.profile svg {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  fill: #474545;
+}
+
+.paragraph {
+  color: #d9d9d9;
+}
+
+/* Progress bar */
+progress {
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #d9d9d9; /* Background color of the progress bar */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+progress::-webkit-progress-bar {
+  background-color: #d9d9d9; /* Background color of the progress bar */
+}
+
+progress::-webkit-progress-value {
+  background-color: #ff3131; /* Color of the progress indicator */
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+progress::-moz-progress-bar {
+  background-color: #ff3131; /* Color of the progress indicator */
+  border-radius: 10px;
+}
+
+progress::-ms-fill {
+  background-color: red; /* Color of the progress indicator */
+  border-radius: 10px;
+}
+
+/*Task component styling*/
+.task-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-body {
+  flex-basis: 70%;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #474545;
+  width: 100%;
+  height: 20%;
+  border-radius: 5px;
+  margin: 5px;
 }
