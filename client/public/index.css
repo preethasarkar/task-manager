@@ -68,6 +68,15 @@ progress::-ms-fill {
 }
 
 /*Task component styling*/
+.sidebar {
+  flex-basis: 20%;
+}
+
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+} 
+
 .task-page {
   display: flex;
   justify-content: space-between;
