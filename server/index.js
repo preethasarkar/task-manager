@@ -65,6 +65,18 @@ app.get("/task",async(req,res)=>{
     }
 })
 
+app.post("/newtask",async(req,res)=>{
+    const {task,categoryid}=req.body;
+    const date=new Date();
+    try{
+        const result=await db.query("Insert into todo(task,category_id,task_date,login_id) values($1,$2,$3,$4)",[task,categoryid,date,login_id]);
+        res.status(200).json({message: "Success"});
+    }catch(err){
+        console.log("Error inserting", err.message);
+        res.status(500).json({ message: "Error"});
+    }
+})
+
 
 app.listen(5500, () => {
     console.log("Listening on port 5500");
