@@ -3,7 +3,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function Profile(){
     return (
-        <div>
+        <div style={{marginLeft: "8px"}}>
             <button className="profile" type="button">
             <AccountCircleIcon />
             </button>

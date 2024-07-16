@@ -1,17 +1,18 @@
 import React from "react";
+import AddIcon from '@mui/icons-material/Add';
 
 
 function InputArea(props) {
     return (
         <div>
-            <button onClick={props.onSubmit} type="button">ADD</button>
+            <button className="styled-button" onClick={props.onSubmit} type="button"><AddIcon/></button>
             <div className="card">
                 <div className="task-content" style={{ padding: "5px" }}>
-                    <input onChange={(event) => props.onChange1(event)} className="paragraph" style={{ backgroundColor: "#2d2b2b" }} value={props.task}></input>
+                    <input placeHolder="Add task" onChange={(event) => props.onChange1(event)} className="paragraph" style={{ backgroundColor: "#2d2b2b" }} value={props.task}></input>
                 </div>
-                <input onChange={(event) => {
+                <input placeHolder="Add category id" onChange={(event) => {
                     props.onChange2(event)
-                }} className="paragraph" style={{ padding: "5px", backgroundColor: "#2d2b2b", marginRight: "5px" }} value={props.categoryid}></input>
+                }} className="paragraph" style={{ backgroundColor: "#2d2b2b", marginRight: "10px" }} value={props.categoryid}></input>
             </div>
         </div>
     )
